@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AdventuresService } from '../shared/services/adventures.service';
 import { Observable } from 'rxjs';
-import { Adventure } from '../models/adventure.model';
+import { Adventure } from '../shared/models/adventure.model';
 
 @Component({
   selector: 'app-adventures',
@@ -9,19 +9,12 @@ import { Adventure } from '../models/adventure.model';
   styleUrls: ['./adventures.component.css']
 })
 export class AdventuresComponent implements OnInit {
-  adventuresollection: AngularFirestoreCollection<Adventure>;
   adventures: Observable<Adventure[]>;
 
-  constructor(db: AngularFirestore) {
-    this.adventuresollection = db.collection('adventures');
-    this.adventures = this.adventuresollection.valueChanges();
+  constructor(private adventuresService: AdventuresService) {
   }
 
   ngOnInit() {
+    this.adventures = this.adventuresService.adventures;
   }
-
-  addAdventure(adventure: Adventure) {
-    this.adventuresollection.add(adventure);
-  }
-
 }
