@@ -17,4 +17,8 @@ export class AdventuresComponent implements OnInit {
   ngOnInit() {
     this.adventures = this.adventuresService.adventures;
   }
+
+  onAdventureDeleted(adventureId: string) {
+    this.adventuresService.deleteAdventure(adventureId);
+  }
 }
