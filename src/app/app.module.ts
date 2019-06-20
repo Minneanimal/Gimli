@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
-import { AdventuresComponent } from './adventures/adventures.component';
+import { AdventuresListComponent } from './adventures/adventures-list/adventures-list.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -20,15 +20,18 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatMenuModule} from '@angular/material/menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AdventureDetailComponent } from './adventures/adventure-detail/adventure-detail.component';
+import { AdventureNavComponent } from './adventures/adventure-nav/adventure-nav.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AdventuresComponent,
+    AdventuresListComponent,
     AdventureFormComponent,
     AdventureCardComponent,
-    AdventureDetailComponent
+    AdventureDetailComponent,
+    AdventureNavComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { AdventureDetailComponent } from './adventures/adventure-detail/adventur
     MatRadioModule,
     MatCardModule,
     MatExpansionModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
