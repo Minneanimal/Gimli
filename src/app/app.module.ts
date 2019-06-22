@@ -27,6 +27,7 @@ import { CharactersComponent } from './characters/characters.component';
 import { CharacterCardComponent } from './characters/character-card/character-card.component';
 import { CharacterListComponent } from './characters/character-list/character-list.component';
 import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AuthComponent } from './auth/auth.component';
     CharactersComponent,
     CharacterCardComponent,
     CharacterListComponent,
-    AuthComponent
+    AuthComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
