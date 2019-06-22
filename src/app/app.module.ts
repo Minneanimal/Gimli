@@ -26,6 +26,7 @@ import { RoleplayComponent } from './roleplay/roleplay.component';
 import { CharactersComponent } from './characters/characters.component';
 import { CharacterCardComponent } from './characters/character-card/character-card.component';
 import { CharacterListComponent } from './characters/character-list/character-list.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CharacterListComponent } from './characters/character-list/character-li
     RoleplayComponent,
     CharactersComponent,
     CharacterCardComponent,
-    CharacterListComponent
+    CharacterListComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
