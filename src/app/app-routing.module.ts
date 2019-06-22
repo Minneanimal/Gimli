@@ -5,6 +5,8 @@ import { AdventureDetailComponent } from "./adventures/adventure-detail/adventur
 import { AdventureFormComponent } from "./adventures/adventure-form/adventure-form.component";
 import { RoleplayComponent } from './roleplay/roleplay.component';
 import { AdventureNavComponent } from './adventures/adventure-nav/adventure-nav.component';
+import { CharactersComponent } from './characters/characters.component';
+import { CharacterListComponent } from './characters/character-list/character-list.component';
 
 const routes: Routes = [
   {
@@ -24,6 +26,10 @@ const routes: Routes = [
         ]
       },
     ]
+  },
+  {
+    path: "characters",
+    component: CharacterListComponent
   },
   {
     path: "",

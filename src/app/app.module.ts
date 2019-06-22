@@ -23,6 +23,9 @@ import { AdventureDetailComponent } from './adventures/adventure-detail/adventur
 import { AdventureNavComponent } from './adventures/adventure-nav/adventure-nav.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { RoleplayComponent } from './roleplay/roleplay.component';
+import { CharactersComponent } from './characters/characters.component';
+import { CharacterCardComponent } from './characters/character-card/character-card.component';
+import { CharacterListComponent } from './characters/character-list/character-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { RoleplayComponent } from './roleplay/roleplay.component';
     AdventureCardComponent,
     AdventureDetailComponent,
     AdventureNavComponent,
-    RoleplayComponent
+    RoleplayComponent,
+    CharactersComponent,
+    CharacterCardComponent,
+    CharacterListComponent
   ],
   imports: [
     BrowserModule,
