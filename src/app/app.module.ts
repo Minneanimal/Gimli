@@ -22,6 +22,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AdventureDetailComponent } from './adventures/adventure-detail/adventure-detail.component';
 import { AdventureNavComponent } from './adventures/adventure-nav/adventure-nav.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { RoleplayComponent } from './roleplay/roleplay.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     AdventureFormComponent,
     AdventureCardComponent,
     AdventureDetailComponent,
-    AdventureNavComponent
+    AdventureNavComponent,
+    RoleplayComponent
   ],
   imports: [
     BrowserModule,

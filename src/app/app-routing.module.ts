@@ -2,7 +2,9 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { AdventuresListComponent } from "./adventures/adventures-list/adventures-list.component";
 import { AdventureDetailComponent } from "./adventures/adventure-detail/adventure-detail.component";
-import { HomeComponent } from "./home/home.component";
+import { AdventureFormComponent } from "./adventures/adventure-form/adventure-form.component";
+import { RoleplayComponent } from './roleplay/roleplay.component';
+import { AdventureNavComponent } from './adventures/adventure-nav/adventure-nav.component';
 
 const routes: Routes = [
   {
@@ -14,8 +16,13 @@ const routes: Routes = [
       },
       {
         path: ":id",
-        component: AdventureDetailComponent
-      }
+        component: AdventureNavComponent,
+        children: [
+          {path: "", component: AdventureDetailComponent},
+          {path: "roleplay",
+          component: RoleplayComponent}
+        ]
+      },
     ]
   },
   {
@@ -26,7 +33,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-adventure-nav',
-  templateUrl: './adventure-nav.component.html',
-  styleUrls: ['./adventure-nav.component.css']
+  selector: "app-adventure-nav",
+  templateUrl: "./adventure-nav.component.html",
+  styleUrls: ["./adventure-nav.component.css"]
 })
 export class AdventureNavComponent implements OnInit {
-  links = ['Overview', 'Roleplay', 'Characters'];
-  activeLink = this.links[0];
+  links = [
+    { label: "Overview", link: "./" },
+    { label: "Roleplay", link: "roleplay" },
+    { label: "Characters", link: "characters" }
+  ];
+  activeLink = this.links[0].link;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
