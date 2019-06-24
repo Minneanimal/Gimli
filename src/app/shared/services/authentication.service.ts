@@ -1,19 +1,25 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase/app';
-import { reject } from 'q';
-import { resolve } from 'url';
+import { auth } from 'firebase/app';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  user = this.afAuth.auth.currentUser;
 
-  constructor(private afAuth: AngularFireAuth) {}
+  constructor(private afAuth: AngularFireAuth, private fb: FormBuilder) {}
 
-  loginWithGoogle(){
+  authForm = this.fb.group({
+    email: [null, Validators.required],
+    password: [null, Validators.required]
+   /*  state: [null, Validators.required], */
+  });
+
+  loginWithGoogle() {
     return new Promise<any>((resolve, reject) => {
-      const provider = new firebase.auth.GoogleAuthProvider();
+      const provider = new auth.GoogleAuthProvider();
       provider.addScope('profile');
       provider.addScope('email');
       this.afAuth.auth.signInWithPopup(provider)
@@ -23,9 +29,22 @@ export class AuthenticationService {
     });
   }
 
+  loginWithCredentials(credentials) {
+    return new Promise<any>((resolve, reject) => {
+      this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
+      .then(res => {
+        resolve(res);
+      }, err => reject(err));
+    });
+  }
+
+  logout() {
+    this.afAuth.auth.signOut();
+  }
+
   register(credentials) {
     return new Promise<any>((resolve, reject) => {
-      firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
+      this.afAuth.auth.createUserWithEmailAndPassword(credentials.email, credentials.password)
       .then(res => {
         resolve(res);
       }, err => reject(err));

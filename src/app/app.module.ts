@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { AdventuresListComponent } from './adventures/adventures-list/adventures-list.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -51,6 +52,7 @@ import { LoginComponent } from './auth/login/login.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'Gimli'),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     MatToolbarModule,

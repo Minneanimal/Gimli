@@ -1,13 +1,49 @@
-<form [formGroup]="registerForm">
-  <div class="form-group">
-    <label>Email address</label>
-    <input type="email" formControlName="email" class="form-control" required>
-  </div>
-  <div class="form-group">
-    <label>Password</label>
-    <input type="password" class="form-control" formControlName="password" required>
-    <label class="error">{{errorMessage}}</label>
-    <label class="success">{{successMessage}}</label>
-  </div>
-  <button type="submit" (click)="tryRegister(registerForm.value)" class="btn btn-default">Register</button>
+<form [formGroup]="this.authService.authForm" novalidate>
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="email" placeholder="Email" formControlName="email" required>
+            <mat-error *ngIf="this.authService.authForm.controls['email'].hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput type="password" placeholder="Password" formControlName="password" required>
+            <mat-error *ngIf="this.authService.authForm.controls['password'].hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+            <label class="error">{{errorMessage}}</label>
+            <label class="success">{{successMessage}}</label>
+          </mat-form-field>
+        </div>
+      </div>
+<!--       <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="State" formControlName="state">
+              <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+                {{ state.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
+              State is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div> -->
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="tryRegister(this.authService.authForm.value)">Register</button>
+      <button mat-raised-button (click)="loginWithGoogle()">Login with Google</button>
+    </mat-card-actions>
+  </mat-card>
 </form>
