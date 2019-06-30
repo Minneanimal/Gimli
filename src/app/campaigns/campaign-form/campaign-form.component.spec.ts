@@ -9,15 +9,15 @@ import {
   MatSelectModule,
 } from '@angular/material';
 
-import { AdventureFormComponent } from './adventure-form.component';
+import { CampaignFormComponent } from './campaign-form.component';
 
-describe('AdventureFormComponent', () => {
-  let component: AdventureFormComponent;
-  let fixture: ComponentFixture<AdventureFormComponent>;
+describe('CampaignFormComponent', () => {
+  let component: CampaignFormComponent;
+  let fixture: ComponentFixture<CampaignFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdventureFormComponent ],
+      declarations: [ CampaignFormComponent ],
       imports: [
         NoopAnimationsModule,
         ReactiveFormsModule,
@@ -31,7 +31,7 @@ describe('AdventureFormComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdventureFormComponent);
+    fixture = TestBed.createComponent(CampaignFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

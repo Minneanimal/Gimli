@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Character } from '../models/character.model';
 import { Observable } from 'rxjs';
 import { AngularFirestoreDocument, AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,11 @@ export class CharacterService {
   private characterDoc: AngularFirestoreDocument<Character>;
   characters: Observable<Character[]>;
   character: Observable<Character>;
+
+  characterForm = this.fb.group({
+    name: [null, Validators.required]
+   /*  state: [null, Validators.required], */
+  });
 
   constructor(db: AngularFirestore, private fb: FormBuilder) {
     this.charactersCollection = db.collection('characters');

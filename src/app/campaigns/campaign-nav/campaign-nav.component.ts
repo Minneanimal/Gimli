@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "app-adventure-nav",
-  templateUrl: "./adventure-nav.component.html",
-  styleUrls: ["./adventure-nav.component.css"]
+  selector: "app-campaign-nav",
+  templateUrl: "./campaign-nav.component.html",
+  styleUrls: ["./campaign-nav.component.css"]
 })
-export class AdventureNavComponent implements OnInit {
+export class CampaignNavComponent implements OnInit {
   links = [
     { label: "Overview", link: "./" },
     { label: "Roleplay", link: "roleplay" },

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Character } from 'src/app/shared/models/character.model';
 
@@ -9,7 +9,7 @@ import { Character } from 'src/app/shared/models/character.model';
 })
 export class CharacterCardComponent implements OnInit {
   @Input() character: Character;
-  @Output() adventureDeleted = new EventEmitter<string>();
+  @Output() characterDeleted = new EventEmitter<string>();
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
@@ -17,7 +17,7 @@ export class CharacterCardComponent implements OnInit {
   }
 
   deleteCharacter(characterId: string) {
-    this.adventureDeleted.emit(characterId);
+    this.characterDeleted.emit(characterId);
   }
 
   navigateToCharacter() {

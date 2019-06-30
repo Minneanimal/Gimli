@@ -17,8 +17,7 @@ export class CharacterListComponent implements OnInit {
     this.characters$ = this.characterService.characters;
   }
 
-  onAdventureDeleted(characterId: string) {
+  characterDeleted(characterId: string) {
     this.characterService.deleteCharacter(characterId);
   }
-
 }

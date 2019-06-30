@@ -1,26 +1,26 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AdventuresListComponent } from "./adventures/adventures-list/adventures-list.component";
-import { AdventureDetailComponent } from "./adventures/adventure-detail/adventure-detail.component";
+import { CampaignListComponent } from "./campaigns/campaign-list/campaign-list.component";
+import { CampaignDetailComponent } from "./campaigns/campaign-detail/campaign-detail.component";
 import { RoleplayComponent } from "./roleplay/roleplay.component";
-import { AdventureNavComponent } from "./adventures/adventure-nav/adventure-nav.component";
+import { CampaignNavComponent } from "./campaigns/campaign-nav/campaign-nav.component";
 import { CharacterListComponent } from "./characters/character-list/character-list.component";
 import { LoginComponent } from "./auth/login/login.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   {
-    path: "adventures",
+    path: "campaigns",
     children: [
       {
         path: "",
-        component: AdventuresListComponent
+        component: CampaignListComponent
       },
       {
         path: ":id",
-        component: AdventureNavComponent,
+        component: CampaignNavComponent,
         children: [
-          { path: "", component: AdventureDetailComponent },
+          { path: "", component: CampaignDetailComponent },
           { path: "roleplay", component: RoleplayComponent },
           { path: "characters", component: CharacterListComponent}
         ]
@@ -34,7 +34,7 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "adventures"
+    redirectTo: "campaigns"
   }
 ];
 
