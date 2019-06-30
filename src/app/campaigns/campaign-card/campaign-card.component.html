@@ -1,0 +1,15 @@
+<mat-card class="example-card">
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-header>
+    <mat-card-title>{{campaign.title}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Author is {{campaign.authorFirstName}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button (click)="navigateToCampaign()">view</button>
+    <button mat-button (click)="deleteCampaign(campaign.campaignId)">delete</button>
+  </mat-card-actions>
+</mat-card>
