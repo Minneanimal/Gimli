@@ -22,8 +22,8 @@ export class CampaignService {
   }
 
   campaignForm = this.fb.group({
-    title: [null, Validators.required]
-   /*  state: [null, Validators.required], */
+    title: [null, Validators.required],
+    characterSelect: [null]
   });
 
   createCampaign(campaignInput) {

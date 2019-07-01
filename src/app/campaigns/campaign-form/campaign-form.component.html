@@ -14,20 +14,17 @@
           </mat-form-field>
         </div>
       </div>
-<!--       <div class="row">
+      <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <mat-select placeholder="State" formControlName="state">
-              <mat-option *ngFor="let state of states" [value]="state.abbreviation">
-                {{ state.name }}
+            <mat-select placeholder="characters" formControlName="characterSelect">
+              <mat-option *ngFor="let character of characters | async" [value]="character.id">
+                {{ character.name }}
               </mat-option>
             </mat-select>
-            <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
-              State is <strong>required</strong>
-            </mat-error>
           </mat-form-field>
         </div>
-      </div> -->
+      </div>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>

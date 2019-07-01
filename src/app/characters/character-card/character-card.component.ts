@@ -21,7 +21,7 @@ export class CharacterCardComponent implements OnInit {
   }
 
   navigateToCharacter() {
-    this.router.navigate([this.character.characterId], {relativeTo: this.route});
+    this.router.navigate([this.character.id], {relativeTo: this.route});
   }
 
 }
