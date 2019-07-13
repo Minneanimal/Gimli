@@ -14,17 +14,6 @@
           </mat-form-field>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width">
-            <mat-select placeholder="characters" formControlName="characterSelect">
-              <mat-option *ngFor="let character of characters | async" [value]="character.id">
-                {{ character.name }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>

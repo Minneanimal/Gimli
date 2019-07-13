@@ -3,8 +3,6 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Campaign } from '../models/campaign.model';
 import { Observable } from 'rxjs';
 import { Validators, FormBuilder } from '@angular/forms';
-import { AuthenticationService } from './authentication.service';
-import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +14,19 @@ export class CampaignService {
   campaign: Observable<Campaign>;
   currrentUserId: string;
 
-  constructor(db: AngularFirestore, private fb: FormBuilder, private authService: AuthenticationService) {
+  constructor(db: AngularFirestore, private fb: FormBuilder) {
     this.campaignsCollection = db.collection('campaigns');
     this.campaigns = this.campaignsCollection.valueChanges({ idField: 'campaignId' });
   }
 
   campaignForm = this.fb.group({
-    title: [null, Validators.required],
-    characterSelect: [null]
+    title: [null, Validators.required]
   });
 
   createCampaign(campaignInput) {
-    this.campaignsCollection.add(campaignInput).then(res => {}, err => console.log(err));
+    this.campaignsCollection.add(campaignInput).then(res => {
+      console.log(res);
+    }, err => console.log(err));
   }
 
   getCampaign(id: string) {
@@ -38,5 +37,9 @@ export class CampaignService {
 
   deleteCampaign(id: string) {
     this.campaignsCollection.doc<Campaign>('/' + id).delete();
+  }
+
+  addCharacterToCampaign(campaignId: string, characterId: string) {
+    this.campaignsCollection.doc<Campaign>('/' + campaignId).update({characterIds: [characterId]});
   }
 }

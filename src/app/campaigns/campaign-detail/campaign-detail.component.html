@@ -1,4 +1,18 @@
 <p *ngIf="campaign$ | async; let campaign">
   {{ campaign.title }} works!
 </p>
+<div class="row">
+  <div class="col">
+    <form [formGroup]="joinCampaignForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="full-width">
+      <mat-select placeholder="characters" formControlName="characterId">
+        <mat-option *ngFor="let character of characters$ | async" [value]="character.id">
+          {{ character.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit">Add Character</button>
+  </form>
+  </div>
+</div>
 
