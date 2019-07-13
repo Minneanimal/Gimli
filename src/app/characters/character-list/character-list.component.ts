@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CharacterService } from 'src/app/shared/services/character.service';
 import { Observable } from 'rxjs';
 import { Character } from 'src/app/shared/models/character.model';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
 @Component({
   selector: 'app-character-list',
@@ -17,7 +18,7 @@ export class CharacterListComponent implements OnInit {
     this.characters$ = this.characterService.characters;
   }
 
-  characterDeleted(characterId: string) {
+  onCharacterDeleted(characterId: string) {
     this.characterService.deleteCharacter(characterId);
   }
 }

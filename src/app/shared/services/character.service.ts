@@ -20,7 +20,7 @@ export class CharacterService {
 
   constructor(db: AngularFirestore, private fb: FormBuilder) {
     this.charactersCollection = db.collection('characters');
-    this.characters = this.charactersCollection.valueChanges({ idField: 'characterId' });
+    this.characters = this.charactersCollection.valueChanges({ idField: 'id' });
   }
 
   createCharacter(character: Character) {
