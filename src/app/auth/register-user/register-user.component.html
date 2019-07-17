@@ -1,7 +1,7 @@
 <form [formGroup]="this.authService.authForm" novalidate>
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
+      <mat-card-title>Register</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="row">
@@ -30,6 +30,6 @@
     <mat-card-actions>
       <button mat-raised-button color="primary" (click)="tryRegister(this.authService.authForm.value)">Submit</button>
     </mat-card-actions>
-    <button mat-raised-button (click)="loginWithGoogle()">Login with Google</button>
+    If you aleady have an account you can <a [routerLink]="['/login']"> login here</a>. Or login with google <button mat-raised-button (click)="loginWithGoogle()">Login with Google</button>
   </mat-card>
 </form>
