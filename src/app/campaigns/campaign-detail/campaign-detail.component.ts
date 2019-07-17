@@ -31,7 +31,7 @@ export class CampaignDetailComponent implements OnInit {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    this.campaignService.addCharacterToCampaign(this.campaignId, this.joinCampaignForm.get('characterId').value);
+    this.characterService.addCharacterToCampaign(this.campaignId, this.joinCampaignForm.get('characterId').value);
   }
 
   ngOnInit() {

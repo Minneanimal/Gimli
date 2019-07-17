@@ -38,8 +38,4 @@ export class CampaignService {
   deleteCampaign(id: string) {
     this.campaignsCollection.doc<Campaign>('/' + id).delete();
   }
-
-  addCharacterToCampaign(campaignId: string, characterId: string) {
-    this.campaignsCollection.doc<Campaign>('/' + campaignId).update({characterIds: [characterId]});
-  }
 }

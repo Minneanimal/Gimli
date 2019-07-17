@@ -3,6 +3,7 @@ import { Character } from '../models/character.model';
 import { Observable } from 'rxjs';
 import { AngularFirestoreDocument, AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { FormBuilder, Validators } from '@angular/forms';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,17 @@ export class CharacterService {
 
   deleteCharacter(id: string) {
     this.charactersCollection.doc<Character>('/' + id).delete();
+  }
+
+  addCharacterToCampaign(campaignId: string, characterId: string) {
+    this.charactersCollection.doc<Character>('/' + characterId).update({currentCampaignId: campaignId});
+  }
+
+  getCharactersByCampaignId(campaignId: string) {
+    return this.characters.pipe(
+      map(characters => {
+        return characters.filter(character => character.currentCampaignId === campaignId);
+      })
+    );
   }
 }
