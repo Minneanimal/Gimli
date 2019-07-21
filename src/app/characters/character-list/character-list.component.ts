@@ -18,7 +18,7 @@ export class CharacterListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.campaignId)
+    console.log(this.campaignId);
     this.characters$ = this.characterService.getCharactersByCampaignId(this.campaignId);
   }
 

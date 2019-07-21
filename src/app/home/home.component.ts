@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,11 @@ export class HomeComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router, public afAuth: AngularFireAuth) {}
+      navigateToLogin() {
+        this.router.navigate(['new-user']);
+      }
+  logout() {
+    this.afAuth.auth.signOut();
+  }
 }

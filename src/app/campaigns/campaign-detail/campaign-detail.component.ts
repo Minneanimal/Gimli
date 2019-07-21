@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { CharacterService } from '../../shared/services/character.service';
 import { Character } from '../../shared/models/character.model';
 import { FormGroup, FormControl } from '@angular/forms';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-campaign-detail',
@@ -36,6 +37,10 @@ export class CampaignDetailComponent implements OnInit {
 
   ngOnInit() {
     this.campaign$ = this.campaignService.getCampaign(this.campaignId);
-    this.characters$ = this.characterService.characters;
+    this.characters$ = this.characterService.characters.pipe(
+      map((allCharacters: Character[]) => {
+        return allCharacters.filter(character => !character.currentCampaignId);
+      })
+    );
   }
 }
