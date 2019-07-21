@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Campaign } from '../models/campaign.model';
 import { Observable } from 'rxjs';
 import { Validators, FormBuilder } from '@angular/forms';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,8 @@ export class CampaignService {
     title: [null, Validators.required]
   });
 
-  createCampaign(campaignInput) {
-    this.campaignsCollection.add(campaignInput).then(res => {
+  createCampaign(newCampaign: Campaign) {
+    this.campaignsCollection.add(newCampaign).then(res => {
       console.log(res);
     }, err => console.log(err));
   }
@@ -33,6 +34,14 @@ export class CampaignService {
     this.campaignDoc = this.campaignsCollection.doc<Campaign>('/' + id);
     this.campaign = this.campaignDoc.valueChanges();
     return this.campaign;
+  }
+
+  getAllCampaignsByUserId(userId: string) {
+    return this.campaigns.pipe(
+      map((campaigns: Campaign[]) => {
+        return campaigns.filter(campaign => campaign.uid === userId);
+      })
+    );
   }
 
   deleteCampaign(id: string) {

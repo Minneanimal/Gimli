@@ -7,7 +7,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  user = this.afAuth.auth.currentUser;
+  user = this.afAuth.authState;
 
   constructor(private afAuth: AngularFireAuth, private fb: FormBuilder) {}
 

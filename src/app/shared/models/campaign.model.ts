@@ -1,5 +1,6 @@
 
 export interface Campaign {
     title: string;
-    campaignId: string;
+    campaignId?: string;
+    uid?: string;
 }

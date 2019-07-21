@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CampaignService } from '../../shared/services/campaign.service';
 import { Observable } from 'rxjs';
 import { Campaign } from '../../shared/models/campaign.model';
+import { AuthenticationService } from '../../shared/services/authentication.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-campaign-list',
@@ -10,12 +12,15 @@ import { Campaign } from '../../shared/models/campaign.model';
 })
 export class CampaignListComponent implements OnInit {
   campaigns: Observable<Campaign[]>;
+  userId: string;
 
-  constructor(private campaignService: CampaignService) {
+  constructor(private campaignService: CampaignService, private authService: AuthenticationService) {
   }
 
   ngOnInit() {
-    this.campaigns = this.campaignService.campaigns;
+    this.authService.user.subscribe(user => {
+      this.campaigns = this.campaignService.getAllCampaignsByUserId(user.uid);
+    });
   }
 
   onCampaignDeleted(campaignId: string) {
