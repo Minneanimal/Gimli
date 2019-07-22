@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
   successMessage: string;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
       console.log(res);
       this.errorMessage = "";
       this.successMessage = "Your account has been created";
+      this.router.navigate(['campaigns']);
     }, err => {
       console.log(err);
       this.errorMessage = err.message;
