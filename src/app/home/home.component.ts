@@ -11,17 +11,22 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(map(result => result.matches));
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches)
-    );
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    public afAuth: AngularFireAuth
+  ) {}
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router, public afAuth: AngularFireAuth) {}
-      navigateToLogin() {
-        this.router.navigate(['new-user']);
-      }
+  navigateToLogin() {
+    this.router.navigate(['new-user']);
+  }
+
   logout() {
     this.afAuth.auth.signOut();
+    this.router.navigate(['/login']);
   }
 }

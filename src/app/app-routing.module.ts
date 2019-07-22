@@ -7,6 +7,7 @@ import { CampaignNavComponent } from './campaigns/campaign-nav/campaign-nav.comp
 import { CharacterListComponent } from './characters/character-list/character-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterUserComponent } from './auth/register-user/register-user.component';
+import { AuthGuard } from './auth/auth-guard';
 
 const routes: Routes = [
   { path: 'new-user', component: RegisterUserComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
           { path: 'characters', component: CharacterListComponent}
         ]
       }
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   {
     path: 'characters',

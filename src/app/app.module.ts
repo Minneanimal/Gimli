@@ -57,7 +57,7 @@ import { RegisterUserComponent } from './auth/register-user/register-user.compon
     AuthComponent,
     LoginComponent,
     CharacterFormComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +80,7 @@ import { RegisterUserComponent } from './auth/register-user/register-user.compon
     MatCardModule,
     MatExpansionModule,
     MatMenuModule,
-    MatTabsModule
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
