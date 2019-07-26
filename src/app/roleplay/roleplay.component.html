@@ -1,3 +1,29 @@
-<p>
-  roleplay works!
-</p>
+<ng-container *ngIf="currentCharacter$ | async as currentCharacter; else elseTemplate">
+    <mat-list>
+        <mat-list-item *ngFor="let post of posts$ | async as posts">
+          <img matListAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="...">
+          <h3 matLine> {{ post.characterName }} </h3>
+          <p matLine>
+            <span> subject </span>
+            <span class="demo-2"> -- {{post.body}} </span>
+          </p>
+          <mat-divider>
+          </mat-divider>
+        </mat-list-item>
+      </mat-list>
+      <mat-divider>
+      </mat-divider>
+      <br>
+      <div class="conversation-input">
+        <form [formGroup]="this.postService.postForm" novalidate>
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Start chatting..." formControlName="body">
+                <mat-icon matSuffix (click)="onSubmit(currentCharacter)">send</mat-icon>
+              </mat-form-field>
+        </form>
+        <div [froalaEditor]>Hello, Froala!</div>
+      </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <p>i'm broken</p>
+</ng-template>
