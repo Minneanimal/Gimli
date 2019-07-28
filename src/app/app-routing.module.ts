@@ -8,6 +8,7 @@ import { CharacterListComponent } from './characters/character-list/character-li
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterUserComponent } from './auth/register-user/register-user.component';
 import { AuthGuard } from './auth/auth-guard';
+import { CampaignFormComponent } from './campaigns/campaign-form/campaign-form.component';
 
 const routes: Routes = [
   { path: 'new-user', component: RegisterUserComponent },
@@ -20,6 +21,10 @@ const routes: Routes = [
         component: CampaignListComponent
       },
       {
+        path: 'new-campaign',
+        component: CampaignFormComponent
+      },
+      {
         path: ':id',
         component: CampaignNavComponent,
         children: [
@@ -27,7 +32,7 @@ const routes: Routes = [
           { path: 'roleplay', component: RoleplayComponent },
           { path: 'characters', component: CharacterListComponent}
         ]
-      }
+      },
     ],
     canActivate: [AuthGuard]
   },

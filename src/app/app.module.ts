@@ -20,7 +20,8 @@ import {
   MatInputModule,
   MatSelectModule,
   MatRadioModule,
-  MatCardModule
+  MatCardModule,
+  MatStepperModule
 } from '@angular/material';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -86,6 +87,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
     MatExpansionModule,
     MatMenuModule,
     MatTabsModule,
+    MatStepperModule,
     FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
   ],
