@@ -23,7 +23,7 @@ import {
   MatCardModule
 } from '@angular/material';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CampaignFormComponent } from './campaigns/campaign-form/campaign-form.component';
 import { CampaignCardComponent } from './campaigns/campaign-card/campaign-card.component';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -40,6 +40,9 @@ import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { CharacterFormComponent } from './characters/character-form/character-form.component';
 import { RegisterUserComponent } from './auth/register-user/register-user.component';
+import { PostComponent } from './roleplay/post/post.component';
+
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,7 @@ import { RegisterUserComponent } from './auth/register-user/register-user.compon
     LoginComponent,
     CharacterFormComponent,
     RegisterUserComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +71,7 @@ import { RegisterUserComponent } from './auth/register-user/register-user.compon
     AngularFirestoreModule,
     AngularFireAuthModule,
     ReactiveFormsModule,
+    FormsModule,
     FlexLayoutModule,
     MatToolbarModule,
     LayoutModule,
@@ -81,6 +86,8 @@ import { RegisterUserComponent } from './auth/register-user/register-user.compon
     MatExpansionModule,
     MatMenuModule,
     MatTabsModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
