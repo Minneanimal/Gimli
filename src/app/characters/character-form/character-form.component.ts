@@ -13,6 +13,7 @@ import { Character } from '../../shared/models/character.model';
 export class CharacterFormComponent implements OnDestroy {
   userId: string;
   destroyed$ = new Subject<void>();
+  characterImages: string[];
 
   constructor(private characterService: CharacterService, private authService: AuthenticationService) {
     this.authService.user.pipe(takeUntil(this.destroyed$)).subscribe(user => this.userId = user.uid);
@@ -22,7 +23,8 @@ export class CharacterFormComponent implements OnDestroy {
     const characterName = this.characterService.characterForm.value.name;
     const newCharacter: Character = {
       name: characterName,
-      uid: this.userId
+      uid: this.userId,
+      imageUrl: ''
     };
 
     this.characterService.createCharacter(newCharacter);

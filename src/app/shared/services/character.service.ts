@@ -48,7 +48,7 @@ export class CharacterService {
       .collection<Character>('characters', ref =>
         ref.where('currentCampaignId', '==', campaignId).where('uid', '==', userId)
       )
-      .valueChanges().pipe(map(characters => characters[0]));
+      .valueChanges({idField: 'id'}).pipe(map(characters => characters[0]));
   }
 
   getCharactersByCampaignId(campaignId: string): Observable<Character[]> {
