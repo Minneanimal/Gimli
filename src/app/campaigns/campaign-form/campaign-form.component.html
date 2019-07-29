@@ -26,7 +26,7 @@
     <form [formGroup]="firstFormGroup" class="example-form">
       <ng-template matStepLabel>Basic Information</ng-template>
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Campaign Name" formControlName="name" required>
+        <input matInput placeholder="Campaign Name" formControlName="title" required>
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <textarea matInput placeholder="Overview" formControlName="overview" required></textarea>
@@ -92,6 +92,7 @@
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button (click)="onSubmit()">Confirm</button>
     </div>
   </mat-step>
 </mat-vertical-stepper>

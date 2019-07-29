@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../shared/services/authentication.serv
 import { Campaign } from '../../shared/models/campaign.model';
 import { takeUntil } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 interface System {
   value: string;
@@ -73,6 +74,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     private campaignService: CampaignService,
     public characterService: CharacterService,
     private authService: AuthenticationService,
+    private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder
   ) {
     this.authService.user.pipe(takeUntil(this.destroyed$)).subscribe(user => {
@@ -85,7 +88,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.characters = this.characterService.characters;
     this.firstFormGroup = this.fb.group({
-      name: ['', Validators.required],
+      title: ['', Validators.required],
       overview: ['', Validators.required]
     });
     this.secondFormGroup = this.fb.group({
@@ -104,13 +107,23 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    const campaignTitle = this.campaignService.campaignForm.value.title;
+    const campaignInfo = {
+      ...this.firstFormGroup.value,
+      ...this.secondFormGroup.value,
+      ...this.thirdFormGroup.value
+    };
 
     const newCampaign: Campaign = {
-      title: campaignTitle,
-      uid: this.userId
+      title: campaignInfo.title,
+      uid: this.userId,
+      imageUrl: '',
+      genre: campaignInfo.genre,
+      pace: campaignInfo.pace,
+      maturityRating: campaignInfo.maturityRating,
+      system: campaignInfo.system
     };
 
     this.campaignService.createCampaign(newCampaign);
+    this.router.navigate(['../campaigns']);
   }
 }
